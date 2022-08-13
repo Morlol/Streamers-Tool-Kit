@@ -1,0 +1,22 @@
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\bin\Release\netcoreapp3.1\Streamers Tool Kit.exe
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\bin\Release\netcoreapp3.1\Streamers Tool Kit.deps.json
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\bin\Release\netcoreapp3.1\Streamers Tool Kit.runtimeconfig.json
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\bin\Release\netcoreapp3.1\Streamers Tool Kit.runtimeconfig.dev.json
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\bin\Release\netcoreapp3.1\Streamers Tool Kit.dll
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\bin\Release\netcoreapp3.1\Streamers Tool Kit.pdb
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit.csproj.AssemblyReference.cache
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\MainWindow.g.cs
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\App.g.cs
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit_MarkupCompile.cache
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit_MarkupCompile.lref
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\MainWindow.baml
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit.g.resources
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit.GeneratedMSBuildEditorConfig.editorconfig
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit.AssemblyInfoInputs.cache
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit.AssemblyInfo.cs
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit.csproj.CoreCompileInputs.cache
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit.csproj.CopyComplete
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit.dll
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit.pdb
+D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Release\netcoreapp3.1\Streamers Tool Kit.genruntimeconfig.cache

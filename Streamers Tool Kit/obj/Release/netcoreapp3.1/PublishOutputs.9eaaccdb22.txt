@@ -1,0 +1,6 @@
+E:\MyPrograms\Streamers Tool Kit\Streamers Tool Kit.exe
+E:\MyPrograms\Streamers Tool Kit\Streamers Tool Kit.dll
+E:\MyPrograms\Streamers Tool Kit\Streamers Tool Kit.deps.json
+E:\MyPrograms\Streamers Tool Kit\Streamers Tool Kit.runtimeconfig.json
+E:\MyPrograms\Streamers Tool Kit\Streamers Tool Kit.pdb
+E:\MyPrograms\Streamers Tool Kit\Newtonsoft.Json.dll
