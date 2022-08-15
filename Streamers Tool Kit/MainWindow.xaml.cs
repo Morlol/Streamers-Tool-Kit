@@ -19,18 +19,18 @@ namespace Streamers_Tool_Kit
         public MainWindow()
         {
             InitializeComponent();
-            Directory.CreateDirectory("OBS");
-            Directory.CreateDirectory("SaveFiles");
+            Directory.CreateDirectory("_OBS");
+            Directory.CreateDirectory("_SaveFiles");
 
             // Creating Files for OBS
-            File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_List_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message1_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message2_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message3_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message4_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message5_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message6_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_Number_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "RNG_List_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message1_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message2_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message3_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message4_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message5_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message6_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "RNG_Number_OBS.txt"), "");
         }
 
         // Start of the Random List Code
@@ -79,7 +79,7 @@ namespace Streamers_Tool_Kit
             string stringoutput = ListItems[rngoutput];
             MessageBox.Show("Your Random Item is: " + stringoutput + "!", stringoutput);
             RNGListContent.Content = stringoutput;
-            File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_List_OBS.txt"), stringoutput);
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "RNG_List_OBS.txt"), stringoutput);
         }
 
         private void LoadList_Click(object sender, RoutedEventArgs e)
@@ -89,7 +89,7 @@ namespace Streamers_Tool_Kit
             // Creates a Open File Dialog
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Title = "Open a Random List";
-            openFile.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "SaveFiles");
+            openFile.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "_SaveFiles");
             openFile.Filter = "Random List Files | *.RLF";
             if (openFile.ShowDialog() == true)
                 JsonContent = File.ReadAllText(openFile.FileName);
@@ -127,7 +127,7 @@ namespace Streamers_Tool_Kit
             // Opens a Save File Dialog
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.Title = "Save your Random List";
-            saveFile.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "SaveFiles");
+            saveFile.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "_SaveFiles");
             saveFile.Filter = "Random List Files | *.RLF";
             saveFile.DefaultExt = ".RLF";
             saveFile.FileName = "Random List SaveFile";
@@ -246,7 +246,7 @@ namespace Streamers_Tool_Kit
             saveFileDialog.Title = "Save your Streamplan";
             saveFileDialog.Filter = "Streamplan Files |*.SPF";
             saveFileDialog.DefaultExt = ".SPF";
-            saveFileDialog.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "SaveFiles");
+            saveFileDialog.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "_SaveFiles");
             saveFileDialog.FileName = "Streamplan Savefile";
             if (saveFileDialog.ShowDialog() == true)
                 File.WriteAllText(saveFileDialog.FileName, json);
@@ -258,7 +258,7 @@ namespace Streamers_Tool_Kit
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Load your Streamplan";
             openFileDialog.Filter = "Streamplan Files |*.SPF";
-            openFileDialog.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "SaveFiles");
+            openFileDialog.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "_SaveFiles");
             if (openFileDialog.ShowDialog() == true)
                 fileinfo = File.ReadAllText(openFileDialog.FileName);
             dynamic json = JsonConvert.DeserializeObject<List<StreamInfo>>(fileinfo);
@@ -281,28 +281,28 @@ namespace Streamers_Tool_Kit
                 TextBox message = sender as TextBox;
                 if (message == Message1)
                 {
-                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message1_OBS.txt"), message.Text);
+                    File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message1_OBS.txt"), message.Text);
                 }
                 else if (message == Message2)
                 {
-                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message2_OBS.txt"), message.Text);
+                    File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message2_OBS.txt"), message.Text);
                 }
 
                 else if (message == Message3)
                 {
-                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message3_OBS.txt"), message.Text);
+                    File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message3_OBS.txt"), message.Text);
                 }
                 else if (message == Message4)
                 {
-                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message4_OBS.txt"), message.Text);
+                    File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message4_OBS.txt"), message.Text);
                 }
                 else if (message == Message5)
                 {
-                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message5_OBS.txt"), message.Text);
+                    File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message5_OBS.txt"), message.Text);
                 }
                 else if (message == Message6)
                 {
-                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message6_OBS.txt"), message.Text);
+                    File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message6_OBS.txt"), message.Text);
                 }
             }
         }
@@ -312,14 +312,14 @@ namespace Streamers_Tool_Kit
             if(StreamsWindow != null)
             StreamsWindow.Close();
 
-            File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_List_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message1_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message2_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message3_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message4_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message5_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message6_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_Number_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "RNG_List_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message1_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message2_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message3_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message4_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message5_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "Stream_Message6_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "RNG_Number_OBS.txt"), "");
         }
 
         // RNG Number Code:
@@ -333,7 +333,7 @@ namespace Streamers_Tool_Kit
             int number = rng.Next(min, max);
             RNG_Result.Content = number;
             MessageBox.Show("Your result is: " + number, "Random Number Generator Result");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_Number_OBS.txt"), number.ToString());
+            File.WriteAllText(System.IO.Path.Combine("_OBS", "RNG_Number_OBS.txt"), number.ToString());
         }
     }
 }
