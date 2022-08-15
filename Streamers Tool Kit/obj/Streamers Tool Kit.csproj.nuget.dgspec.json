@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\StreamTools\\Streamers Tool Kit\\Streamers Tool Kit\\Streamers Tool Kit.csproj": {}
+    "D:\\StreamTools\\Streamers-Tool-Kit\\Streamers Tool Kit\\Streamers Tool Kit.csproj": {}
   },
   "projects": {
-    "D:\\StreamTools\\Streamers Tool Kit\\Streamers Tool Kit\\Streamers Tool Kit.csproj": {
+    "D:\\StreamTools\\Streamers-Tool-Kit\\Streamers Tool Kit\\Streamers Tool Kit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\StreamTools\\Streamers Tool Kit\\Streamers Tool Kit\\Streamers Tool Kit.csproj",
+        "projectUniqueName": "D:\\StreamTools\\Streamers-Tool-Kit\\Streamers Tool Kit\\Streamers Tool Kit.csproj",
         "projectName": "Streamers Tool Kit",
-        "projectPath": "D:\\StreamTools\\Streamers Tool Kit\\Streamers Tool Kit\\Streamers Tool Kit.csproj",
+        "projectPath": "D:\\StreamTools\\Streamers-Tool-Kit\\Streamers Tool Kit\\Streamers Tool Kit.csproj",
         "packagesPath": "C:\\Users\\morlo\\.nuget\\packages\\",
-        "outputPath": "D:\\StreamTools\\Streamers Tool Kit\\Streamers Tool Kit\\obj\\",
+        "outputPath": "D:\\StreamTools\\Streamers-Tool-Kit\\Streamers Tool Kit\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,18 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "MahApps.Metro": {
+              "target": "Package",
+              "version": "[2.4.9, )"
+            },
+            "ModernWpfUI": {
+              "target": "Package",
+              "version": "[0.9.6, )"
+            },
+            "ModernWpfUI.MahApps": {
+              "target": "Package",
+              "version": "[0.9.5, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"

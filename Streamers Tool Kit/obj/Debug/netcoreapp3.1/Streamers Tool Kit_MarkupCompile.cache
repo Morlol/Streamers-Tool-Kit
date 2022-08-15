@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\obj\Debug\netcoreapp3.1\
+D:\StreamTools\Streamers-Tool-Kit\Streamers Tool Kit\obj\Debug\netcoreapp3.1\
 Streamers_Tool_Kit
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-D:\StreamTools\Streamers Tool Kit\Streamers Tool Kit\App.xaml
-11407045341
+D:\StreamTools\Streamers-Tool-Kit\Streamers Tool Kit\App.xaml
+2-144777777
 
-3-1233169557
-193-349354896
-MainWindow.xaml;
+41162825088
+286-7372833
+MainWindow.xaml;StreamPlanWindow.xaml;
 
 False
 

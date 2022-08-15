@@ -1,20 +1,12 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
-using Microsoft.Win32;
-using Newtonsoft.Json;
+using System.Linq;
 
 namespace Streamers_Tool_Kit
 {
@@ -23,7 +15,7 @@ namespace Streamers_Tool_Kit
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,7 +24,12 @@ namespace Streamers_Tool_Kit
 
             // Creating Files for OBS
             File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_List_OBS.txt"), "");
-            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message1_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message2_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message3_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message4_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message5_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message6_OBS.txt"), "");
             File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_Number_OBS.txt"), "");
         }
 
@@ -49,7 +46,7 @@ namespace Streamers_Tool_Kit
                 if (string.IsNullOrWhiteSpace(ListInput.Text))
                 {
                     // Nothing should happen when its only spaces or empty
-                } 
+                }
                 else
                 {
                     // Adds the Content to the List
@@ -62,7 +59,7 @@ namespace Streamers_Tool_Kit
                     StackPanel stackPanel = new StackPanel();
                     b.Child = stackPanel;
                     stackPanel.Children.Add(label);
-                    b.Margin = new Thickness(-5);
+                    b.Margin = new Thickness(-1);
                     ListContainer.Children.Add(b);
 
                     // Other Stuff
@@ -95,7 +92,7 @@ namespace Streamers_Tool_Kit
             openFile.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "SaveFiles");
             openFile.Filter = "Random List Files | *.RLF";
             if (openFile.ShowDialog() == true)
-               JsonContent = File.ReadAllText(openFile.FileName);
+                JsonContent = File.ReadAllText(openFile.FileName);
 
             // Reading the Json File
             dynamic Json = JsonConvert.DeserializeObject(JsonContent);
@@ -110,7 +107,7 @@ namespace Streamers_Tool_Kit
                 StackPanel stackPanel = new StackPanel();
                 b.Child = stackPanel;
                 stackPanel.Children.Add(label);
-                b.Margin = new Thickness(-5);
+                b.Margin = new Thickness(10);
                 ListContainer.Children.Add(b);
 
                 // Other Stuff
@@ -181,6 +178,162 @@ namespace Streamers_Tool_Kit
             DeletMode.IsEnabled = false;
             ResetList.IsEnabled = false;
             ChooseRNGList.IsEnabled = false;
+        }
+
+        // Start of the Streamplan code!
+        // Making the Info Class
+        public class StreamInfo
+        {
+            public string StreamTitel;
+            public string StreamExtra;
+            public string StreamDay;
+            public string StreamTime;
+        }
+
+        List<StreamInfo> Streams = new List<StreamInfo>();
+        public StreamPlanWindow StreamsWindow;
+
+
+        private void AddStream(object sender, RoutedEventArgs e)
+        {
+            if (StreamTitelInput.Text != string.Empty && StreamExtralInput.Text != string.Empty && StreamDayInput.Text != string.Empty && StreamTimelInput.Text != string.Empty)
+            {
+                StreamInfo stream = new StreamInfo
+                {
+                    StreamTitel = StreamTitelInput.Text,
+                    StreamExtra = StreamExtralInput.Text,
+                    StreamDay = StreamDayInput.Text,
+                    StreamTime = StreamTimelInput.Text
+                };
+
+                if (StreamsWindow != null)
+                    StreamsWindow.AddStreamWindow(stream);
+
+                Streams.Add(stream);
+                MessageBox.Show("New Stream added!", stream.StreamTitel);
+
+                StreamTitelInput.Text = "";
+                StreamExtralInput.Text = "";
+                StreamDayInput.Text = "";
+                StreamTimelInput.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("You have to fill in all details", "Missing Information");
+            }
+        }
+
+        private void ResetStreams(object sender, RoutedEventArgs e)
+        {
+            Streams.Clear();
+            StreamsWindow.StreamsContainer.Children.Clear();
+        }
+
+        private void OpenStreamPlan(object sender, RoutedEventArgs e)
+        {
+            StreamsWindow = new StreamPlanWindow();
+            foreach (StreamInfo i in Streams)
+            StreamsWindow.AddStreamWindow(i);
+            StreamsWindow.Show();
+            StreamsWindow.Showing();
+        }
+
+        private void SaveStreamPlan(object sender, RoutedEventArgs e)
+        {
+            string json = JsonConvert.SerializeObject(Streams, Formatting.Indented);
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Save your Streamplan";
+            saveFileDialog.Filter = "Streamplan Files |*.SPF";
+            saveFileDialog.DefaultExt = ".SPF";
+            saveFileDialog.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "SaveFiles");
+            saveFileDialog.FileName = "Streamplan Savefile";
+            if (saveFileDialog.ShowDialog() == true)
+                File.WriteAllText(saveFileDialog.FileName, json);
+        }
+
+        private void LoadStreamPlan(object sender, RoutedEventArgs e)
+        {
+            string fileinfo = "";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Load your Streamplan";
+            openFileDialog.Filter = "Streamplan Files |*.SPF";
+            openFileDialog.InitialDirectory = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory().ToString(), "SaveFiles");
+            if (openFileDialog.ShowDialog() == true)
+                fileinfo = File.ReadAllText(openFileDialog.FileName);
+            dynamic json = JsonConvert.DeserializeObject<List<StreamInfo>>(fileinfo);
+
+            foreach (StreamInfo i in json)
+            {
+                Streams.Add(i);
+                if(StreamsWindow != null)
+                    StreamsWindow.AddStreamWindow(i);
+            }
+
+            MessageBox.Show("Successfully loaded in the Streamplan!", "Streamplan ready");
+        }
+
+        // Start of the On Stream Message Code
+        private void MessageEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                TextBox message = sender as TextBox;
+                if (message == Message1)
+                {
+                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message1_OBS.txt"), message.Text);
+                }
+                else if (message == Message2)
+                {
+                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message2_OBS.txt"), message.Text);
+                }
+
+                else if (message == Message3)
+                {
+                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message3_OBS.txt"), message.Text);
+                }
+                else if (message == Message4)
+                {
+                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message4_OBS.txt"), message.Text);
+                }
+                else if (message == Message5)
+                {
+                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message5_OBS.txt"), message.Text);
+                }
+                else if (message == Message6)
+                {
+                    File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message6_OBS.txt"), message.Text);
+                }
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(StreamsWindow != null)
+            StreamsWindow.Close();
+
+            File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_List_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message1_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message2_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message3_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message4_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message5_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "Stream_Message6_OBS.txt"), "");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_Number_OBS.txt"), "");
+        }
+
+        // RNG Number Code:
+
+        private void ChooseRNG(object sender, RoutedEventArgs e)
+        {
+            int min = ((int)RNG_NumMin.Value.Value);
+            int max = ((int)RNG_NumMax.Value.Value);
+            Random rng = new Random();
+
+            int number = rng.Next(min, max);
+            RNG_Result.Content = number;
+            MessageBox.Show("Your result is: " + number, "Random Number Generator Result");
+            File.WriteAllText(System.IO.Path.Combine("OBS", "RNG_Number_OBS.txt"), number.ToString());
         }
     }
 }
